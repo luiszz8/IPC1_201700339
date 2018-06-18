@@ -34,6 +34,7 @@ public class frmTablero extends javax.swing.JFrame {
     int [] vidasY;
     int [] BombasX;
     int [] BombasY;
+    int [] VidasG;
     String nombre[]=new String[20];
     String orden1=new String();
     String orden2=new String();
@@ -47,6 +48,7 @@ public class frmTablero extends javax.swing.JFrame {
     String Tju2;
     
     static int njugador = 0;
+    static int gvidas = 0;
     int dado=0;
     boolean aVida=true;
     boolean bVida=true;
@@ -545,6 +547,18 @@ public class frmTablero extends javax.swing.JFrame {
                             Izquierda.setEnabled(false);
                             System.out.println("finish");
                             tiempo=false;
+                            if (vidas1>vidas2) {
+                                JOptionPane.showMessageDialog(null, "Jugador 1 Gana.");
+                            }
+                            if (vidas2>vidas1) {
+                                JOptionPane.showMessageDialog(null, "Jugador 2 Gana.");
+                            }
+                            if (vidas1==vidas2) {
+                                JOptionPane.showMessageDialog(null, "Empate.");
+                            }
+                            VidasG[gvidas]=vidas1;
+                            gvidas++;
+                            VidasG[gvidas]=vidas2;
                         }
                         
                         sleep(100);
@@ -579,7 +593,7 @@ public class frmTablero extends javax.swing.JFrame {
                                 ImageIcon v1=new ImageIcon(vidass1.getImage());
                                 Vidas1.setIcon(v1);
                             }
-                            if (vidas1==0) {
+                            if (vidas1<=0) {
                                 ImageIcon vidass1=new ImageIcon(getClass().getResource("/imagenes/1cor0.png"));
                                 ImageIcon v1=new ImageIcon(vidass1.getImage());
                                 Vidas1.setIcon(v1);
@@ -590,6 +604,10 @@ public class frmTablero extends javax.swing.JFrame {
                                 Izquierda.setEnabled(false);
                                 System.out.println("finish");
                                 cavida1=false;
+                                JOptionPane.showMessageDialog(null, "Jugador 2 Gana.");
+                                VidasG[gvidas]=vidas1;
+                                gvidas++;
+                                VidasG[gvidas]=vidas2;
                             }
                         
                         sleep(100);
@@ -624,7 +642,7 @@ public class frmTablero extends javax.swing.JFrame {
                                 ImageIcon v1=new ImageIcon(vidass1.getImage());
                                 Vidas2.setIcon(v1);
                             }
-                            if (vidas2==0) {
+                            if (vidas2<=0) {
                                 ImageIcon vidass1=new ImageIcon(getClass().getResource("/imagenes/2cor0.png"));
                                 ImageIcon v1=new ImageIcon(vidass1.getImage());
                                 Vidas2.setIcon(v1);
@@ -635,6 +653,10 @@ public class frmTablero extends javax.swing.JFrame {
                                 Izquierda.setEnabled(false);
                                 System.out.println("finish");
                                 cavida2=false;
+                                JOptionPane.showMessageDialog(null, "Jugador 1 Gana.");
+                                VidasG[gvidas]=vidas1;
+                                gvidas++;
+                                VidasG[gvidas]=vidas2;
                             }
                         
                         sleep(100);
